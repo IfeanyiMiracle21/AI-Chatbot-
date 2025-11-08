@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chatbot - Powered by Claude</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>🤖 AI Chatbot</h2>
+                <p class="version">Powered by Claude</p>
+            </div>
+            
+            <div class="sidebar-content">
+                <button class="new-chat-btn" id="newChatBtn">
+                    ➕ New Chat
+                </button>
+                
+                <div class="chat-history">
+                    <h3>Chat History</h3>
+                    <div id="chatHistoryList"></div>
+                </div>
+            </div>
+            
+            <div class="sidebar-footer">
+                <button class="settings-btn" id="settingsBtn">⚙️ Settings</button>
+                <button class="theme-toggle" id="themeToggle">🌙</button>
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="chat-container">
+            <header class="chat-header">
+                <div class="chat-info">
+                    <h1 id="chatTitle">New Conversation</h1>
+                    <p class="chat-subtitle">Ask me anything!</p>
+                </div>
+                <div class="chat-actions">
+                    <button class="action-btn" id="exportBtn" title="Export Chat">
+                        📥 Export
+                    </button>
+                    <button class="action-btn" id="clearBtn" title="Clear Chat">
+                        🗑️ Clear
+                    </button>
+                </div>
+            </header>
+
+            <div class="messages-container" id="messagesContainer">
+                <div class="welcome-message">
+                    <div class="welcome-icon">🤖</div>
+                    <h2>Welcome to AI Chatbot!</h2>
+                    <p>I'm powered by Claude AI. Ask me anything - from coding help to creative writing!</p>
+                    <div class="suggestions">
+                        <button class="suggestion-btn" data-prompt="Explain quantum computing in simple terms">Explain quantum computing</button>
+                        <button class="suggestion-btn" data-prompt="Write a Python function to sort a list">Help me code in Python</button>
+                        <button class="suggestion-btn" data-prompt="Give me creative writing prompts">Creative writing ideas</button>
+                        <button class="suggestion-btn" data-prompt="What are the latest trends in web development?">Web dev trends</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-container">
+                <div class="typing-indicator" id="typingIndicator">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <form class="input-form" id="chatForm">
+                    <textarea 
+                        id="messageInput" 
+                        placeholder="Type your message here... (Shift + Enter for new line)"
+                        rows="1"
+                    ></textarea>
+                    <button type="button" class="voice-btn" id="voiceBtn" title="Voice Input">
+                        🎤
+                    </button>
+                    <button type="submit" class="send-btn" id="sendBtn">
+                        ➤
+                    </button>
+                </form>
+                <div class="input-info">
+                    <span id="charCount">0 / 4000</span>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal" id="settingsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>⚙️ Settings</h2>
+                <button class="close-btn" id="closeSettings">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="setting-group">
+                    <label for="apiEndpoint">API Endpoint:</label>
+                    <input type="text" id="apiEndpoint" value="http://localhost:3000/api/chat" placeholder="http://localhost:3000/api/chat">
+                </div>
+                <div class="setting-group">
+                    <label for="maxTokens">Max Response Length:</label>
+                    <input type="number" id="maxTokens" value="1024" min="100" max="4096">
+                </div>
+                <div class="setting-group">
+                    <label>
+                        <input type="checkbox" id="streamResponse" checked>
+                        Enable Streaming Responses
+                    </label>
+                </div>
+                <div class="setting-group">
+                    <label>
+                        <input type="checkbox" id="saveHistory" checked>
+                        Save Chat History
+                    </label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-primary" id="saveSettings">Save Settings</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
