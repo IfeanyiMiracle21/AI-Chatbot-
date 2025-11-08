@@ -1,5 +1,3 @@
-// app.js - Frontend JavaScript
-
 class ChatBot {
     constructor() {
         this.messages = [];
